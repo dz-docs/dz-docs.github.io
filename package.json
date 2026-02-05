@@ -1,0 +1,65 @@
+{
+  "name": "dz-docs.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/dz-docs/dz-docs.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/dz-docs/dz-docs.github.io/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dz-docs/dz-docs.github.io.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "scripts": {
+    "clean:docs": "rimraf docs",
+    "clean:parcel-cache": "rimraf .parcel-cache",
+    "clean": "run-p clean:*",
+    "dev:p:build-js": "parcel watch --target web index.html",
+    "dev:p:py-server": "python3 -m http.server -d docs/",
+    "dev:p": "run-p dev:p:*",
+    "dev": "run-s clean dev:p",
+    "build:prod": "parcel build --target web index.html",
+    "build:builder": "parcel build --target node scripts/buildJekyll.js",
+    "build:cleaner": "node scripts/buildCleaner.js",
+    "build:jekyll": "node dist/buildJekyll.js",
+    "build": "run-s clean build:prod build:builder build:cleaner build:jekyll"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.16.4",
+    "bulma": "^1.0.4",
+    "classnames": "^2.5.1",
+    "mkdirp": "^3.0.1",
+    "npm-run-all": "^4.1.5",
+    "parcel": "^2.16.4",
+    "parcel-reporter-static-files-copy": "^1.5.3",
+    "path-browserify": "^1.0.1",
+    "preact": "^10.28.3",
+    "preact-render-to-string": "^6.6.5",
+    "process": "^0.11.10",
+    "rimraf": "^6.1.2",
+    "sass": "^1.97.3"
+  },
+  "staticFiles": {
+    "staticPath": "static"
+  },
+  "alias": {
+    "react": "preact/compat",
+    "react-dom/test-utils": "preact/test-utils",
+    "react-dom": "preact/compat",
+    "react/jsx-runtime": "preact/jsx-runtime"
+  },
+  "targets": {
+    "web": {
+      "distDir": "./docs"
+    },
+    "node": {
+      "distDir": "./dist",
+      "engines": {
+        "node": ">= 25"
+      }
+    }
+  }
+}
