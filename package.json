@@ -22,13 +22,11 @@
     "dev:p": "run-p dev:p:*",
     "dev": "run-s clean dev:p",
     "build:prod": "parcel build --target web index.html",
-    "build:builder": "parcel build --target node scripts/buildJekyll.js",
-    "build:cleaner": "node scripts/buildCleaner.js",
-    "build:jekyll": "node dist/buildJekyll.js",
-    "build": "run-s clean build:prod build:builder build:cleaner build:jekyll"
+    "build": "run-s clean build:prod"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.16.4",
+    "@tailwindcss/postcss": "^4.1.18",
     "bulma": "^1.0.4",
     "classnames": "^2.5.1",
     "mkdirp": "^3.0.1",
@@ -40,7 +38,8 @@
     "preact-render-to-string": "^6.6.5",
     "process": "^0.11.10",
     "rimraf": "^6.1.2",
-    "sass": "^1.97.3"
+    "sass": "^1.97.3",
+    "tailwindcss": "^4.1.18"
   },
   "staticFiles": {
     "staticPath": "static"
