@@ -36,7 +36,7 @@ function Link(props) {
 
 function App() {
   return (
-    <div>
+    <div className='text-3xl font-bold underline' >
       hi
     </div>
   )
@@ -47,6 +47,8 @@ export default function DzDocs() {
 
   const ctx = new CtxClass(state, setState);
   ctx.state = state;
+
+  console.log('hi')
 
   return (
     <Ctx.Provider value={ctx}>
