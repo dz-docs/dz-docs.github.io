@@ -48,7 +48,7 @@ export default function DzDocs() {
   const ctx = new CtxClass(state, setState);
   ctx.state = state;
 
-  console.log('hi!')
+  console.log('hi')
 
   return (
     <Ctx.Provider value={ctx}>

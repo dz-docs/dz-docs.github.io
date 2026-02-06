@@ -17,16 +17,18 @@
     "clean:docs": "rimraf docs",
     "clean:parcel-cache": "rimraf .parcel-cache",
     "clean": "run-p clean:*",
-    "dev:p:build-js": "parcel watch --target web index.html",
+    "dev:p:build-js": "node scripts/watchAndBuild.js",
     "dev:p:py-server": "python3 -m http.server -d docs/",
     "dev:p": "run-p dev:p:*",
     "dev": "run-s clean dev:p",
-    "build:prod": "parcel build --target web index.html",
+    "build:prod": "parcel build --target web html/index.html",
     "build": "run-s clean build:prod"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
     "classnames": "^2.5.1",
+    "daisyui": "^5.5.18",
+    "execa": "^9.6.1",
     "mkdirp": "^3.0.1",
     "npm-run-all": "^4.1.5",
     "parcel": "^2.16.4",
@@ -38,7 +40,8 @@
     "process": "^0.11.10",
     "rimraf": "^6.1.2",
     "sass": "^1.97.3",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "watcher": "^2.3.1"
   },
   "staticFiles": {
     "staticPath": "static"
@@ -52,12 +55,6 @@
   "targets": {
     "web": {
       "distDir": "./docs"
-    },
-    "node": {
-      "distDir": "./dist",
-      "engines": {
-        "node": ">= 25"
-      }
     }
   }
 }
