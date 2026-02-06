@@ -13,7 +13,7 @@ function runBuild() {
     if (timeoutId) {
         clearTimeout(timeoutId);
     }
-    timeoutId = setTimeout(trueRunBuild, 200);
+    timeoutId = setTimeout(trueRunBuild, 50);
 }
 
 const watcher = new Watcher(['./html', './js', './static', './styles']);

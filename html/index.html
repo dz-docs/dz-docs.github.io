@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+    <script>
+        window.setDataTheme = () => {
+            const isDark = localStorage.theme === "dark" || (
+                !("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches
+            );
+            document.documentElement.dataset.theme = isDark ? "dark" : "light";
+        }
+        window.setDataTheme();
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>notes</title>
