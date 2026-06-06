@@ -12,7 +12,7 @@
   },
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "clean:docs": "rimraf docs",
     "clean:parcel-cache": "rimraf .parcel-cache",
@@ -21,34 +21,36 @@
     "dev:bg:py-server": "python3 -m http.server -d docs/",
     "dev:bg": "run-p dev:bg:*",
     "dev": "run-s clean dev:bg",
-    "build:prod": "parcel build --target web html/index.html",
+    "build:html": "parcel build --target web html/index.html",
+    "build:json": "tsx scripts/buildJson.js",
+    "build:prod": "run-p build:html build:json",
     "build": "run-s clean build:prod"
   },
   "devDependencies": {
+    "@dz/-": "file:../LINK.dz__DOLLAR_SIGN__.ts",
     "@tailwindcss/postcss": "^4.1.18",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/react": "^19.2.14",
     "classnames": "^2.5.1",
     "daisyui": "^5.5.18",
     "execa": "^9.6.1",
+    "glob": "^13.0.6",
     "mkdirp": "^3.0.1",
     "npm-run-all": "^4.1.5",
     "parcel": "^2.16.4",
     "parcel-reporter-static-files-copy": "^1.5.3",
     "postcss": "^8.5.6",
-    "preact": "^10.28.3",
-    "preact-render-to-string": "^6.6.5",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.6",
     "rimraf": "^6.1.2",
     "sass": "^1.97.3",
-    "tailwindcss": "^4.1.18",
+    "tailwindcss": "^4.3.0",
+    "tailwindcss-animated": "^2.1.0",
+    "tsx": "^4.22.3",
     "watcher": "^2.3.1"
   },
   "staticFiles": {
     "staticPath": "static"
-  },
-  "alias": {
-    "react": "preact/compat",
-    "react-dom/test-utils": "preact/test-utils",
-    "react-dom": "preact/compat",
-    "react/jsx-runtime": "preact/jsx-runtime"
   },
   "targets": {
     "web": {

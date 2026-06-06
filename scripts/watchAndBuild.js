@@ -5,7 +5,6 @@ let timeoutId
 
 async function trueRunBuild() {
     timeoutId = undefined;
-    console.log('EXECA!');
     await execa('npm', ['run', 'build:prod'], { stdout: ['pipe', 'inherit'], stderr: ['pipe', 'inherit'] });
 }
 

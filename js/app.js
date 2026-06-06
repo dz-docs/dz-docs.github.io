@@ -1,5 +1,7 @@
-import { render, h } from 'preact';
+import { createRoot } from "react-dom/client";
+import { createElement } from "react";
 import DzDocs from './DzDocs';
 
-const container = document.getElementById('app');
-render(h(DzDocs), container);
+const mountEl = document.getElementById('app');
+const root = createRoot(mountEl);
+root.render(createElement(DzDocs, {}));
